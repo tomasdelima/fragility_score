@@ -92,7 +92,7 @@ function buildEmailBody() {
   for(i=1; i < 7; i++) {
     q = 'question' + i
     a = app.result[q] ? 'Sim' : 'Não'
-    body += '  ' +i + ') ' + app.questions[q] + ": " + a + line
+    body += '  ' +i + ') ' + app.questions[q] + " " + a + line
   }
   body += line + 'Resultado: ' + app.risk()
   return body
