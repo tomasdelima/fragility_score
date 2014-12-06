@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/round_buttons.css" />
+    <title>Escore de Fragilidade</title>
+  </head>
+  <body>
+
+    <h1>Escore de Fragilidade</h1>
+
+    <center>
+      <div class="question0">
+        <h3>Digite os dados do paciente:</h3>
+        <div>Nome:</div>                 <input class='right' type="text" name="name" autofocus><br>
+        <div>Número do prontuário:</div> <input class='right' type="text" name="registry"><br>
+      </div>
+      <div class="question1 hidden">
+        <h3>Primeira questão:</h3>
+        O senhor(a) notou que emagreceu no último ano?
+      </div>
+      <div class="question2 hidden">
+        <h3>Segunda questão:</h3>
+        Sentiu que teve que fazer esforço para fazer suas tarefas habituais?
+      </div>
+      <div class="question3 hidden">
+        <h3>Terceira questão:</h3>
+        Não conseguiu levar adiante suas coisas?
+      </div>
+      <div class="question4 hidden">
+        <h3>Quarta questão:</h3>
+        Tem apresentado dificuldade para segurar objetos, deixando escapar pelas mãos?
+      </div>
+      <div class="question5 hidden">
+        <h3>Quinta questão:</h3>
+        Tem notado que andar está ficando mais lento e difícil?
+      </div>
+      <div class="question6 hidden">
+        <h3>Sexta questão:</h3>
+        Algum médico já disse que o(a) senhor(a) possui pelo menos duas das condições a seguir: doenças do coração, pressão alta, artrite/reumatismo, diabetes melitus, doença do pulmão, osteoporose, depressão, câncer, AVC/derrame/isquemia?
+      </div>
+      <div class="question7 hidden">
+        <h3>Seu escore final é:</h3>
+        <div class='center'>
+          <span class='left'>Primeira questão:</span>
+          <span class='right answer' id='question1'></span>
+        </div>
+        <div class='center'>
+          <span class='left'>Segunda questão:</span>
+          <span class='right answer' id='question2'></span>
+        </div>
+        <div class='center'>
+          <span class='left'>Terceira questão:</span>
+          <span class='right answer' id='question3'></span>
+        </div>
+        <div class='center'>
+          <span class='left'>Quarta questão:</span>
+          <span class='right answer' id='question4'></span>
+        </div>
+        <div class='center'>
+          <span class='left'>Quinta questão:</span>
+          <span class='right answer' id='question5'></span>
+        </div>
+        <div class='center'>
+          <span class='left'>Sexta questão:</span>
+          <span class='right answer' id='question6'></span>
+        </div>
+        <hr>
+        <div class="center">
+          <span class='left'>Total:</span>
+          <strong class='right answer' id='total'></strong>
+        </div>
+        <strong class="center" id='risk'></strong>
+      </div>
+
+      <nav class='next'>
+        <ul class="nav">
+          <li>
+            <a href="#" onclick='nextQuestion()'>
+              <span>Proximo</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class='answers hidden'>
+        <nav>
+          <ul class="nav">
+            <li>
+              <a href="#" onclick='score(1)'>
+                <span class="icon-yes"></span>
+              </a>
+            </li>
+            <li>
+              <a href="#" onclick='score(0)'>
+                <span class="icon-no"></span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class='question7 hidden'>
+        <nav>
+          <ul class="nav">
+            <li>
+              <a href="#" onclick='location.reload()'>
+                <span class="icon-refresh"></span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="send-email" onclick='sendEmail()'>
+                <span class="icon-mail"></span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+    </center>
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
+  </body>
+</html>
