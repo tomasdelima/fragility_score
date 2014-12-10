@@ -24,6 +24,7 @@
 .icon-no:after { content: "\2717"; }
 .icon-refresh:after { content: "\21bb"; }
 .icon-mail:after { content: "\2709"; }
+.icon-save:after { content: ""; }
 
 * {
   -webkit-box-sizing: border-box;

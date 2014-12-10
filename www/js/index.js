@@ -65,7 +65,7 @@ function showResults() {
   }
   $('#total').text( app.totalScore() )
   $('#risk').text( app.risk() )
-  $('.answers').addClass('hidden')  
+  $('.answers').addClass('hidden')
 }
 
 function nextQuestion() {
@@ -74,7 +74,7 @@ function nextQuestion() {
   }
 
   showNextQuestion()
-  
+
   if (app.currentQuestion == 7) {
     showResults()
   }
@@ -102,17 +102,11 @@ function buildEmailSubject() {
   return 'Resultado do teste "Escore de Fragilidade" para ' + app.patientName()
 }
 
-function sendEmail () {
-  cordova.plugins.email.open({
-    to:          [app.mailTo], 
-    cc:          [], 
-    bcc:         [], 
-    attachments: [], 
-    subject:     buildEmailSubject(), 
-    body:        buildEmailBody(), 
-    isHtml:      false, 
-  });
-}
-
 
 app.initialize();
+
+
+
+
+
+
