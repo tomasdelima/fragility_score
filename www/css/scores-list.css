@@ -1,0 +1,20 @@
+h4 {
+  margin-bottom: 20px;
+}
+
+.score {
+  margin: 7px;
+  padding: 10px 30px;
+  border: 1px solid rgb(150,150,150);
+  border-radius: 7px;
+  background: rgba(200,200,200,.5);
+}
+
+.score .body {
+  text-align: left;
+  font-size: 11px;
+}
+
+.send-delete-email {
+  font-size: 15px;
+}

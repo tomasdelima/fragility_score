@@ -25,20 +25,35 @@
     <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/scores-list.css" />
     <link rel="stylesheet" type="text/css" href="css/round_buttons.css" />
     <title>Escore de Fragilidade</title>
   </head>
   <body>
+    <div class="layer"></div>
 
     <h1>Escore de Fragilidade</h1>
 
-    <center id='list'></center>
+    <center>
+      <h4>Lista de emails salvos</h4>
 
-    <a href="index.html" class="score-new">Novo escore</a>
+      <div id='list' class='hidden'></div>
+
+      <nav>
+        <ul class="nav">
+          <li>
+            <a href="index.html" class="score-new">
+              <span class="">Voltar</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </center>
 
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
     <script type="text/javascript" src="js/db-opperations.js"></script>
+    <script type="text/javascript" src="js/email.js"></script>
     <script type="text/javascript" src="js/scores-list.js"></script>
   </body>
 </html>

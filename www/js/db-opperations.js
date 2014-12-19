@@ -1,30 +1,19 @@
 
-function sendEmail () {
-  cordova.plugins.email.open({
-    to:          [app.mailTo],
-    cc:          [],
-    bcc:         [],
-    attachments: [],
-    subject:     buildEmailSubject(),
-    body:        buildEmailBody(),
-    isHtml:      false,
-  });
-}
-
 function saveEmail () {
   loadEmails()
+  nextId()
 
   db.transaction(function (tx) {
-    tx.executeSql('INsERT INTO scores_table VALUES ('+emailsRead+',"'+Date(Date.now())+'",'+Date.now()+',"'+app.patientName()+'","'+buildEmailBody()+'")')
+    tx.executeSql('INSERT INTO scores_table VALUES ('+maxId+',"'+Date(Date.now())+'",'+Date.now()+',"'+app.patientName()+'","'+buildEmailBody()+'", "false")')
   },
   function(e){alert('Email não foi salvo: ' + e.message)},
-  function(e){alert('Email salvo')})
+  function(e){window.plugins.toast.showLongBottom('Email salvo')})
 
   loadEmails()
 
 }
 
-function loadEmails (patient, emailBody) {
+function loadEmails () {
   db.transaction(function (tx) {
     tx.executeSql('SELECT * FROM scores_table', [], function(tx, results) {
         emailsRead = 1 + results.rows.length
@@ -34,10 +23,46 @@ function loadEmails (patient, emailBody) {
   });
 }
 
+function loadEmailById (id) {
+  db.transaction(function (tx) {
+    tx.executeSql('SELECT * FROM scores_table WHERE id = ' + id, [], function(tx, results) {
+        email = results.rows.item(0)
+      }
+    );
+  });
+}
+
+function nextId () {
+  db.transaction(function (tx) {
+    tx.executeSql('SELECT max(id) as maxId FROM scores_table', [], function(tx, results) {
+        maxId = results.rows.item(0).maxId + 1
+      }
+    );
+  });
+}
+
+function deleteEmail (id) {
+  db.transaction(function (tx) {
+    tx.executeSql('DELETE FROM scores_table WHERE id = ' + id, []);
+  },
+  function(e){alert('Email não foi deletado: ' + e.message)},
+  function(e){
+    location.reload()
+    window.plugins.toast.showLongBottom('Email deletado')
+  });
+
+}
+
+function setEmailSent (id) {
+  db.transaction(function (tx) {
+    tx.executeSql('UPDATE scores_table SET sent="true" WHERE id = ' + id);
+  });
+}
+
 $(document).ready(function() {
   db = openDatabase('mydb', '1.0', 'My DB', 2 * 1024 * 1024);
 
   db.transaction(function (tx) {
-    tx.executeSql('CREATE TABLE IF NOT EXISTS scores_table (id integer primary key, data text, data_num integer, patient text, email_body text)');
+    tx.executeSql('CREATE TABLE IF NOT EXISTS scores_table (id integer primary key, data text, data_num integer, patient text, email_body text, sent bool)');
   });
 })

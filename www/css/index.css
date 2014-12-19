@@ -164,6 +164,10 @@ h3 {
   min-height: 200px;
 }
 
+.answers + .question7 {
+  min-height: 0;
+}
+
 .question0{
   min-height: 170px;
 }
@@ -191,4 +195,8 @@ input {
 .input-label {
   min-width: 60px;
   margin: 5px;
+}
+
+.scores-list {
+  margin: 70px 0;
 }

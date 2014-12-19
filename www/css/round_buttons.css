@@ -22,6 +22,7 @@
 
 .icon-yes:after { content: "\2713"; }
 .icon-no:after { content: "\2717"; }
+.icon-return:after { content: ""; }
 .icon-refresh:after { content: "\21bb"; }
 .icon-mail:after { content: "\2709"; }
 .icon-save:after { content: ""; }

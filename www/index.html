@@ -33,7 +33,7 @@
 
     <h1>Escore de Fragilidade</h1>
 
-    <center>
+    <center class='hidden'>
       <div class="question0">
         <h3>Digite os dados do paciente:</h3>
         <div>Nome:</div>                 <input class='right' type="text" name="name" autofocus='true'><br>
@@ -119,6 +119,15 @@
               <a href="#" onclick='score(0)'>
                 <span class="icon-no"></span>
               </a>
+          </ul>
+        </nav>
+        <nav>
+          <ul class="nav">
+            </li>
+            <li>
+              <a class="scores-list" href="#" onclick="previousQuestion()">
+                Voltar
+              </a>
             </li>
           </ul>
         </nav>
@@ -139,26 +148,24 @@
             </li>
           </ul>
         </nav>
-        <nav>
+        <nav class='hidden'>
           <ul class="nav">
             <li>
               <a href="#" class="send-email" onclick='saveEmail()'>
                 <span class="">Salvar</span>
               </a>
-            </li>
           </ul>
         </nav>
       </div>
       
-      <!-- <div class="test"></div> -->
-
+      <div class="scores-list"><a href="scores-list.html">Lista de escores</a></div>
     </center>
 
-    <!-- <a href="scores-list.html" class="scores-list">Lista de escores</a> -->
 
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
     <script type="text/javascript" src="js/db-opperations.js"></script>
+    <script type="text/javascript" src="js/email.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
   </body>
 </html>
