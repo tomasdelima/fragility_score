@@ -8,12 +8,12 @@ $(document).ready(function() {
       item = emails.item(i)
       html += ''+
         '<div class="score">'+
-          '<a href="#" onclick="toggleShow('+item.id+')">'+item.patient+'</a>'+
+          '<a href="#" data-id="'+item.id+'">'+item.patient+'</a>'+
           '<div class="hidden" id="'+item.id+'">'+
             '<div class="body">'+item.email_body.replace(/\n/g,'<br />')+'</div>'+
             '<center class="send-delete-email">'+
-              '<a href="#" onclick="sendEmailById('+item.id+')">Enviar</a> <a>|</a> '+
-              '<a href="#" onclick="deleteEmail('+item.id+')">Deletar</a>'+
+              '<a href="#" data-function="sendEmailById" data-id="'+item.id+'">Enviar</a> <a>|</a> '+
+              '<a href="#" data-function="deleteEmail" data-id="'+item.id+'">Deletar</a>'+
             '</center>'+
           '</div>'+
         '</div>'
@@ -24,6 +24,11 @@ $(document).ready(function() {
   setTimeout(function(){$('#list').slideDown()}, 300)
 })
 
-function toggleShow(id) {
-  $('#'+id).slideToggle()
-}
+$(document).ready(function(){
+  setTimeout(function(){  
+    $('.score > a').on('click', function(e){
+      id = $(e.target).data('id')
+      $('#'+id).slideToggle()
+    })
+  }, 500)
+})

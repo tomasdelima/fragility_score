@@ -12,7 +12,11 @@ h4 {
 
 .score .body {
   text-align: left;
-  font-size: 11px;
+  font-size: 12px;
+}
+
+.score > a {
+  display: block;
 }
 
 .send-delete-email {

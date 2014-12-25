@@ -4,7 +4,7 @@ function saveEmail () {
   nextId()
 
   db.transaction(function (tx) {
-    tx.executeSql('INSERT INTO scores_table VALUES ('+maxId+',"'+Date(Date.now())+'",'+Date.now()+',"'+app.patientName()+'","'+buildEmailBody()+'", "false")')
+    tx.executeSql('INSERT INTO scores_table VALUES ('+maxId+',"'+Date(Date.now())+'",'+Date.now()+',"'+app.patientName()+'","'+buildEmailBody()+'")')
   },
   function(e){alert('Email não foi salvo: ' + e.message)},
   function(e){window.plugins.toast.showLongBottom('Email salvo')})
@@ -53,16 +53,11 @@ function deleteEmail (id) {
 
 }
 
-function setEmailSent (id) {
-  db.transaction(function (tx) {
-    tx.executeSql('UPDATE scores_table SET sent="true" WHERE id = ' + id);
-  });
-}
 
 $(document).ready(function() {
-  db = openDatabase('mydb', '1.0', 'My DB', 2 * 1024 * 1024);
+  db = openDatabase('mydb', '1.0', 'Fragility Score 1.0', 2 * 1024 * 1024);
 
   db.transaction(function (tx) {
-    tx.executeSql('CREATE TABLE IF NOT EXISTS scores_table (id integer primary key, data text, data_num integer, patient text, email_body text, sent bool)');
+    tx.executeSql('CREATE TABLE IF NOT EXISTS scores_table (id integer primary key, data text, data_num integer, patient text, email_body text)');
   });
 })

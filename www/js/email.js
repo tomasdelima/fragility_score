@@ -13,17 +13,17 @@ function buildEmailBody() {
   return body
 }
 
-function buildEmailSubject() {
-  return 'Resultado do teste "Escore de Fragilidade" para ' + app.patientName()
+function buildEmailSubject(patientName) {
+  return 'Resultado do teste "Escore de Fragilidade" para ' + patientName
 }
 
-function sendEmail (subject, body) {
+function sendEmail (patientName, body) {
   cordova.plugins.email.open({
     to:          [app.mailTo],
     cc:          [],
     bcc:         [],
     attachments: [],
-    subject:     subject || buildEmailSubject(),
+    subject:     buildEmailSubject(patientName),
     body:        body || buildEmailBody(),
     isHtml:      false,
   });
@@ -33,6 +33,20 @@ function sendEmailById (id) {
   loadEmailById(id)
   setTimeout(function(){
     sendEmail(email.patient, email.email_body)
-    setEmailSent(id)
   }, 100)
 }
+
+$(document).ready(function(){
+  setTimeout(function(){
+    $('.send-delete-email a').on('click', function(e){
+      id = $(e.target).data('id')
+      fun = $(e.target).data('function')
+      eval(fun+'('+id+')')
+    })
+  }, 500)
+})
+
+
+
+
+    
